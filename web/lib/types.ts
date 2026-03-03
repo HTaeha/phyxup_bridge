@@ -22,12 +22,52 @@ export interface DiagnosisPrescriptionAnalysis {
   diagnosis: string[];
   prescriptions: Prescription[];
   notes: string;
+  summary: string;
   insights: string[];
 }
 
 export interface LabResultAnalysis {
   type: "lab_result";
   tests: LabTest[];
+  summary: string;
+  insights: string[];
+}
+
+export interface ImagingReportAnalysis {
+  type: "imaging_report";
+  modality: string;
+  bodyPart: string;
+  findings: string[];
+  impression: string;
+  summary: string;
+  insights: string[];
+}
+
+export interface OperativeNoteAnalysis {
+  type: "operative_note";
+  procedure: string;
+  surgeon: string;
+  findings: string;
+  complications: string;
+  summary: string;
+  insights: string[];
+}
+
+export interface ProgressNoteAnalysis {
+  type: "progress_note";
+  chiefComplaint: string;
+  assessment: string;
+  plan: string;
+  summary: string;
+  insights: string[];
+}
+
+export interface DischargeSummaryAnalysis {
+  type: "discharge_summary";
+  admissionDiagnosis: string;
+  dischargeDiagnosis: string;
+  procedures: string[];
+  instructions: string;
   summary: string;
   insights: string[];
 }
@@ -41,6 +81,10 @@ export interface UnknownAnalysis {
 export type EMRAnalysis =
   | DiagnosisPrescriptionAnalysis
   | LabResultAnalysis
+  | ImagingReportAnalysis
+  | OperativeNoteAnalysis
+  | ProgressNoteAnalysis
+  | DischargeSummaryAnalysis
   | UnknownAnalysis;
 
 // ── Error wrapper (API call failure) ──
@@ -73,4 +117,16 @@ export interface BridgeGetResponse {
 
 export interface BridgeErrorResponse {
   error: string;
+}
+
+// ── Chat ──
+
+export interface ChatRequest {
+  entryId: number;
+  question: string;
+}
+
+export interface ChatResponse {
+  ok: true;
+  answer: string;
 }

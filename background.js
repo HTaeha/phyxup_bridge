@@ -1,6 +1,10 @@
-const TARGET_URL = "https://phyxupbridge.vercel.app";
+const DEV_MODE = false; // true → localhost:3000, false → Vercel production
 
-console.log("[PhyxUp] Background service worker loaded");
+const TARGET_URL = DEV_MODE
+  ? "http://localhost:3000"
+  : "https://phyxupbridge.vercel.app";
+
+console.log(`[PhyxUp] Background service worker loaded (${DEV_MODE ? "DEV" : "PROD"}: ${TARGET_URL})`);
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.type !== "SEND_TEXT") return;
