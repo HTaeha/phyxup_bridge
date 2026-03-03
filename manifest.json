@@ -4,7 +4,10 @@
   "version": "0.2.0",
   "description": "EMR 텍스트를 PhyxUp 웹앱으로 브릿지",
   "permissions": ["activeTab", "tabs"],
-  "host_permissions": ["https://phyxupbridge.vercel.app/*"],
+  "host_permissions": [
+    "https://phyxupbridge.vercel.app/*",
+    "http://localhost:3000/*"
+  ],
   "content_scripts": [
     {
       "matches": ["<all_urls>"],

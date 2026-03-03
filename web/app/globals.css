@@ -9,6 +9,10 @@
   --badge-dx: #3b82f6;
   --badge-lab: #8b5cf6;
   --badge-unknown: #6b7280;
+  --badge-imaging: #ec4899;
+  --badge-operative: #f97316;
+  --badge-progress: #14b8a6;
+  --badge-discharge: #6366f1;
   --insight-bg: #fffbeb;
   --insight-border: #f59e0b;
   --high: #ef4444;
@@ -110,6 +114,10 @@ body {
 .badge.dx { background: var(--badge-dx); }
 .badge.lab { background: var(--badge-lab); }
 .badge.unknown { background: var(--badge-unknown); }
+.badge.imaging { background: var(--badge-imaging); }
+.badge.operative { background: var(--badge-operative); }
+.badge.progress { background: var(--badge-progress); }
+.badge.discharge { background: var(--badge-discharge); }
 
 .timestamp {
   font-size: 12px;
@@ -162,6 +170,18 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: 8px;
+}
+
+/* Analysis summary */
+.analysis-summary {
+  background: linear-gradient(135deg, #f0fdf4, #ecfdf5);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  padding: 10px 14px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #065f46;
+  margin-bottom: 14px;
 }
 
 /* Diagnosis list */
@@ -300,6 +320,244 @@ body {
   left: 0;
   font-weight: 700;
   color: var(--insight-border);
+}
+
+/* Detail grid (for imaging, operative, discharge) */
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.detail-item {
+  background: var(--bg);
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+
+.detail-item .detail-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.detail-item .detail-value {
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+/* Findings list */
+.findings-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 14px;
+}
+
+.findings-list li {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text);
+  padding-left: 16px;
+  position: relative;
+  margin-bottom: 4px;
+}
+
+.findings-list li::before {
+  content: "\2022";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* Trend panel */
+.trend-panel {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.trend-panel h2 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+.trend-item {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.trend-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.trend-item-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.trend-item-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.trend-sparkline {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.trend-point {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+}
+
+.trend-point .trend-value {
+  font-weight: 600;
+}
+
+.trend-point .trend-date {
+  color: var(--text-secondary);
+  font-size: 11px;
+}
+
+.trend-arrow {
+  color: var(--text-secondary);
+  font-size: 10px;
+}
+
+/* Direction badges */
+.direction {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.direction.improving {
+  background: #f0fdf4;
+  color: #16a34a;
+}
+
+.direction.worsening {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.direction.stable {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+/* Chat section */
+.chat-section {
+  margin-top: 14px;
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+}
+
+.chat-section h3 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+
+.chat-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.chat-message {
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  max-width: 85%;
+}
+
+.chat-message.user {
+  background: #eff6ff;
+  color: #1e40af;
+  align-self: flex-end;
+}
+
+.chat-message.assistant {
+  background: var(--bg);
+  color: var(--text);
+  align-self: flex-start;
+}
+
+.chat-form {
+  display: flex;
+  gap: 8px;
+}
+
+.chat-form input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--text);
+  background: var(--card-bg);
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.chat-form input:focus {
+  border-color: var(--accent);
+}
+
+.chat-form input::placeholder {
+  color: var(--text-secondary);
+}
+
+.chat-form button {
+  padding: 8px 16px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+}
+
+.chat-form button:hover {
+  background: var(--accent-hover);
+}
+
+.chat-form button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 /* Error state */
