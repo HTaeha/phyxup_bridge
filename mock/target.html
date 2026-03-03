@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PhyxUp Bridge - Target</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f0f2f5;
+      color: #333;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    header h1 {
+      font-size: 24px;
+      color: #2eb6ad;
+      margin-bottom: 6px;
+    }
+
+    header p {
+      font-size: 14px;
+      color: #888;
+    }
+
+    .current-section {
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      margin-bottom: 28px;
+    }
+
+    .current-section label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #666;
+      margin-bottom: 8px;
+    }
+
+    .current-section textarea {
+      width: 100%;
+      min-height: 100px;
+      padding: 12px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: inherit;
+      line-height: 1.5;
+      resize: vertical;
+      transition: border-color 0.2s ease;
+    }
+
+    .current-section textarea:focus {
+      outline: none;
+      border-color: #2eb6ad;
+    }
+
+    .current-section textarea.flash {
+      border-color: #2eb6ad;
+      background: #eafaf9;
+    }
+
+    .status {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #999;
+    }
+
+    .status.received {
+      color: #2eb6ad;
+      font-weight: 600;
+    }
+
+    .history-section {
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    .history-section h2 {
+      font-size: 16px;
+      color: #444;
+      margin-bottom: 14px;
+    }
+
+    .history-list {
+      list-style: none;
+    }
+
+    .history-item {
+      padding: 10px 12px;
+      border-bottom: 1px solid #f0f0f0;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .history-item:last-child {
+      border-bottom: none;
+    }
+
+    .history-text {
+      font-size: 13px;
+      color: #444;
+      word-break: break-word;
+      flex: 1;
+    }
+
+    .history-time {
+      font-size: 11px;
+      color: #aaa;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 24px;
+      color: #bbb;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>PhyxUp Bridge</h1>
+      <p>EMR에서 전송된 텍스트가 여기에 표시됩니다</p>
+    </header>
+
+    <div class="current-section">
+      <label for="bridge-input">수신된 텍스트</label>
+      <textarea id="bridge-input" placeholder="텍스트를 기다리는 중…" readonly></textarea>
+      <div class="status" id="status">대기 중</div>
+    </div>
+
+    <div class="history-section">
+      <h2>전송 히스토리</h2>
+      <ul class="history-list" id="history-list">
+        <li class="empty-state" id="empty-state">아직 전송된 텍스트가 없습니다</li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="target.js"></script>
+</body>
+</html>

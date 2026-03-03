@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "PhyxUp Bridge",
+  "version": "0.2.0",
+  "description": "EMR 텍스트를 PhyxUp 웹앱으로 브릿지",
+  "permissions": ["activeTab", "tabs"],
+  "host_permissions": ["https://phyxupbridge.vercel.app/*"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": []
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
